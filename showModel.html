@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>A-Frame Example Component - Rotate-To</title>
+    <script src="./build copy.js"></script>
+    <script src="./dist/build.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <!-- <script src="./examples/aframe-master.js"></script>  -->
+    <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
+</head>
+
+<body>
+ 
+    <a-scene embedded>
+        <a-entity id="sky"
+        geometry="primitive: sphere; radius: 65;"
+        material="shader: skyGradient; colorTop: #aaa; colorBottom: #fff; side: back"></a-entity>
+<a-entity id="floor"
+        rotation="-90 0 0"
+        geometry="primitive: plane; width: 100; height: 100"
+        material="src: url(floor.jpg); repeat: 80 80">
+</a-entity>
+
+  <a-asset-item id="brainstem" src="./examples/reducerModel.glb"></a-asset-item>
+        <a-assets>
+           
+             <a-mixin id="blue" material="color:white"></a-mixin>
+             <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+             <a-mixin id="text"
+           text="align: center; width: 6;
+                value: This is an introduction to the reducer model"
+         ></a-mixin>
+        
+       </a-assets>
+        <a-entity id="camera" camera position="0 0 5" orbit-controls="
+            target: #target;
+            enableDamping: true;
+            dampingFactor: 0.125;
+            rotateSpeed:0.25;
+            rotateToSpeed: 0.04;
+            rotateTo: 0.172 4.140 2.797;
+            logPosition: true;
+            ">
+        </a-entity>
+
+        <a-entity gltf-model="#brainstem" position="2 2.5 1.476" scale="5 5 5" rotation="-90 0 0"></a-entity>
+        <a-entity id="target">
+          
+          
+        </a-entity>
+        <a-sky color="gray"></a-sky>
+    </a-scene>
+
+    <script>
+        var buttons = document.querySelectorAll('.position-selector')
+
+        buttons.forEach(function(button) {
+            button.addEventListener('click', rotateTo)
+        })
+
+        function rotateTo(e) {
+            var position = e.target.dataset.position
+            document.querySelector('#camera').setAttribute('orbit-controls', 'rotateTo', position)
+        }
+
+
+    </script>
+</body>
+
+</html>
