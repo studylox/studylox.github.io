@@ -1,4 +1,6 @@
-﻿
+﻿该作品是参与计算机设计大赛的作品
+作品主页在Webgl文件夹下的index.html
+
 # HTML Embed Component
 
 HTML Embed is a component created for [A-Frame](https://aframe.io/). The HTML Embed component allows for arbitrary html to be inserted into your aframe scene. It allows you to update the display within A-Frame simply by manipulating the DOM as you normally would. 
